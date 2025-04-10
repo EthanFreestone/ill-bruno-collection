@@ -1,0 +1,15 @@
+{
+  "name": "@k-int/ill-bruno-collection",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "dependencies": {
+    "@k-int/bruno-shared-scripts": "^1.0.0"
+  },
+  "keywords": [],
+  "description": ""
+}
