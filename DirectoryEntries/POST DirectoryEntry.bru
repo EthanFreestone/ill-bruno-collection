@@ -1,0 +1,27 @@
+meta {
+  name: POST DirectoryEntry
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/ill/directory/entry
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "RM Test",
+    "type": "consortium",
+    "slug": "rmTest5",
+    "status": "managed",
+    "id": {{uuid}}
+  }
+}
+
+script:pre-request {
+  const { v4: uuidV4 } = require('uuid');
+  
+  bru.setVar('uuid', uuidV4())
+}

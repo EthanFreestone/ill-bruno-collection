@@ -5,7 +5,12 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/ill/refdata
+  url: {{baseUrl}}/ill/refdata?perPage=100&stats=true
   body: none
   auth: inherit
+}
+
+params:query {
+  perPage: 100
+  stats: true
 }
