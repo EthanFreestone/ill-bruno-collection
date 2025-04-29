@@ -1,0 +1,11 @@
+meta {
+  name: DELETE Directory Entry
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/ill/directory/entry/{{uuid}}
+  body: none
+  auth: inherit
+}
