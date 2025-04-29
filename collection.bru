@@ -1,9 +1,15 @@
 script:pre-request {
-  const { login, loginWithExpiry, setBaseUrl, getBaseUrl } = require('@k-int/bruno-shared-scripts');
+  const {
+    login, 
+    loginWithExpiry, 
+    setBaseUrl, 
+    getBaseUrl,
+    getFolioAxios
+  } = require('@k-int/bruno-shared-scripts');
   setBaseUrl();
   
   //await login();
   
   await loginWithExpiry();
-  
+  const folioAxios = await getFolioAxios();
 }

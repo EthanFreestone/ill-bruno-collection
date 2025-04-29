@@ -1,0 +1,35 @@
+meta {
+  name: POST Create Unit
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/ill/directory/entry
+  body: json
+  auth: inherit
+}
+
+params:query {
+  : 
+}
+
+body:json {
+  // {
+  //   "parent": {
+  //     "id": "290bdc87-623a-4efb-8171-122def50dff6"
+  //   },
+  //   "name": "testCreateUnit",
+  //   "slug": "tCU",
+  //   "status": "managed",
+  //   "id": {{uuid}}
+  // }
+}
+
+script:pre-request {
+  const data = await folioAxios.get(
+    `${getBaseUrl()}/ill/directory/entry?filters=slug=rmTest5` 
+  )
+  
+  console.log("DATA: %o", data)
+}
