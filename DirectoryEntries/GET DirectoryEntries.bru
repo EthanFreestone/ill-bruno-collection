@@ -1,0 +1,18 @@
+meta {
+  name: GET DirectoryEntries
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/ill/directory/entry?perPage=25&page=1&stats=true
+  body: none
+  auth: inherit
+}
+
+params:query {
+  perPage: 25
+  page: 1
+  stats: true
+  ~sort: name;asc
+}
