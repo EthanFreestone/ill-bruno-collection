@@ -15,15 +15,15 @@ params:query {
 }
 
 body:json {
-  // {
-  //   "parent": {
-  //     "id": "290bdc87-623a-4efb-8171-122def50dff6"
-  //   },
-  //   "name": "testCreateUnit",
-  //   "slug": "tCU",
-  //   "status": "managed",
-  //   "id": {{uuid}}
-  // }
+  {
+     "parent": {
+        "id": {{uuid}}
+     },
+     "name": "testCreateUnit",
+     "slug": "tCU",
+     "status": "managed",
+     "id": {{uuid}}
+   }
 }
 
 script:pre-request {

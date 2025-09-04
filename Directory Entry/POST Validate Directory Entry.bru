@@ -5,7 +5,15 @@ meta {
 }
 
 post {
-  url: {{BaseUrl}}/ill/directory/entry/validate
-  body: none
+  url: {{baseUrl}}/ill/directory/entry/validate
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "name": "validateTest",
+    "type": "consortium",
+    "slug": "valTest"
+  }
 }

@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/ill/directory/entry?perPage=25&page=1&stats=true
+  url: {{baseUrl}}/ill/directory/entry?filters=type.value%3Dinstitution&perPage=1000&stats=true
   body: none
   auth: inherit
 }
 
 params:query {
-  perPage: 25
-  page: 1
+  filters: type.value=institution
+  perPage: 1000
   stats: true
   ~sort: name;asc
 }
