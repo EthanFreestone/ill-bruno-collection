@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: /ill/directory/service?filters=status.value%3Dmanaged&perPage=100&sort=id
+  url: {{baseUrl}}/ill/directory/service?filters=status.value%3Dmanaged&perPage=100&sort=id
   body: json
   auth: inherit
 }
