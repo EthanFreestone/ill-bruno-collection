@@ -12,4 +12,8 @@ script:pre-request {
   
   await loginWithExpiry();
   const folioAxios = await getFolioAxios();
+  
+  const { v4: uuidV4 } = require('uuid');
+  
+  bru.setVar('uniqueUUID', uuidV4())
 }

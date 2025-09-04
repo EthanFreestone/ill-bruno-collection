@@ -20,7 +20,7 @@ body:json {
       {
         "_delete": false,
         "authority": {
-          "id": "51440709-9f15-4b6d-9d68-8146a0befa5d"
+          "id": {{illAuthorityId}}
         },
         "symbol": "EXINT1"
       }
@@ -30,13 +30,23 @@ body:json {
         "_delete": false,
         "slug": "EXINT1",
         "service": {
-          "id": "22b7c2d4-56e8-4662-ac63-bd3f2c7b11a8"
+          "id": {{iso18626ServiceId}}
         }
       }
     ],
     "status": "managed",
-    "id": "aefc8d5f-95d9-433e-abc1-00d8acf2654d"
+    "id": {{uniqueUUID}}
   }
+}
+
+script:pre-request {
+  // GET DEFAULT INST INTO VARIABLES
+  const authorityResp = await folioAxios.get(`${bru.getEnvVar('baseUrl')}/ill/directory/namingAuthority?perPage=100`)
+  
+  console.log("authorityResp: %o", authorityResp.data)
+  
+  bru.setVar('illAuthority', authorityResp.data.find(inst => inst.symbol === 'ILL'))
+  bru.setVar('illAuthorityId', bru.getVar('illAuthority').id)
 }
 
 settings {
