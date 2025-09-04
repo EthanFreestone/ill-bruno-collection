@@ -1,0 +1,24 @@
+meta {
+  name: SnapshotConf: GET Refdata
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/ill/refdata?stats=true&perPage=100
+  body: none
+  auth: inherit
+}
+
+params:query {
+  stats: true
+  perPage: 100
+}
+
+script:post-response {
+  bru.setVar("refdata", res.body);
+}
+
+settings {
+  encodeUrl: true
+}
