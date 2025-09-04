@@ -11,5 +11,10 @@
   "presets": {
     "requestType": "http",
     "requestUrl": ""
-  }
+  },
+  "ignore": [
+    ".idea",
+    "node_modules",
+    ".git"
+  ]
 }
