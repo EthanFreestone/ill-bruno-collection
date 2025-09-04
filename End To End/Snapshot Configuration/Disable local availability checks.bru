@@ -1,0 +1,30 @@
+meta {
+  name: Disable local availability checks
+  type: http
+  seq: 2
+}
+
+put {
+  url: /ill/settings/institutionSetting/2c9180a096c91b430196c93f7be20747
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": "2c93809493b5ff3f0193d01f923900fb",
+    "vocab": "YesNo",
+    "section": "autoResponder",
+    "hidden": false,
+    "value": "no",
+    "settingType": "Refdata",
+    "key": "enable_local_availability_check",
+    "institution": {
+      "id": "51bda559-fb6a-467d-a773-845e2e00fff1"
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

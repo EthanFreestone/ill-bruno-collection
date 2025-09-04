@@ -1,0 +1,28 @@
+meta {
+  name: Multiple library support
+  type: http
+  seq: 4
+}
+
+put {
+  url: /ill/settings/systemSetting/2c9180a096c91b430196c93f7b48071d
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "defValue": "no",
+    "hidden": false,
+    "id": "2c9180a096c91b430196c93f7b48071d",
+    "key": "institution_multiple_enabled",
+    "section": "institution",
+    "settingType": "Refdata",
+    "value": "yes",
+    "vocab": "YesNo"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,44 @@
+meta {
+  name: Create new directory entry 2
+  type: http
+  seq: 6
+}
+
+post {
+  url: /ill/directory/entry
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Example Institution 2",
+    "type": "institution",
+    "slug": "EXINT2",
+    "lmsLocationCode": "EXINT2",
+    "symbols": [
+      {
+        "_delete": false,
+        "authority": {
+          "id": "51440709-9f15-4b6d-9d68-8146a0befa5d"
+        },
+        "symbol": "EXINT2"
+      }
+    ],
+    "services": [
+      {
+        "_delete": false,
+        "service": {
+          "id": "22b7c2d4-56e8-4662-ac63-bd3f2c7b11a8"
+        },
+        "slug": "EXINT2"
+      }
+    ],
+    "status": "managed",
+    "id": "63c8956a-cf23-46e4-b6db-26075d15c754"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Create shelving location
+  type: http
+  seq: 3
+}
+
+post {
+  url: /ill/shelvingLocations
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Row A",
+    "code": "Row A"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

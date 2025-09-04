@@ -1,0 +1,31 @@
+meta {
+  name: Create ISO18626 Service
+  type: http
+  seq: 1
+}
+
+post {
+  url: /ill/directory/service?filters=status.value%3Dmanaged&perPage=100&sort=id
+  body: json
+  auth: inherit
+}
+
+params:query {
+  filters: status.value%3Dmanaged
+  perPage: 100
+  sort: id
+}
+
+body:json {
+  {
+    "name": "SNAPSHOT-ISO18626",
+    "type": "2c93809393b0c6e30193b0c8ee77003a",
+    "businessFunction": "2c93809393b0c6e30193b0c8edf90031",
+    "address": "https://sandbox.openrs.k-int.com/api/_/invoke/tenant/ill/ill/externalApi/iso18626",
+    "status": "managed"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,20 @@
+meta {
+  name: POST Create Batch
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/ill/batch
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "description": "A description",
+      "context": "a useful batch",
+      "isRequester": true,
+      "patronRequests": ["id1","id2"]
+  }
+}
