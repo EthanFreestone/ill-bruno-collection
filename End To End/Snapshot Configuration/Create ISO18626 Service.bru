@@ -21,9 +21,13 @@ body:json {
     "name": "SNAPSHOT-ISO18626",
     "type": "iso18626",
     "businessFunction": "ill",
-    "address": "https://sandbox.openrs.k-int.com/api/_/invoke/tenant/ill/ill/externalApi/iso18626",
+    "address": "{{iso18626ServiceAddress}}",
     "status": "managed"
   }
+}
+
+script:pre-request {
+  bru.setVar("iso18626ServiceAddress", `${bru.getEnvVar('baseUrl')}/_/invoke/tenant/ill/ill/externalApi/iso18626`)
 }
 
 script:post-response {

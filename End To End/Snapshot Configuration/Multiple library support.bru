@@ -5,7 +5,7 @@ meta {
 }
 
 put {
-  url: {{baseUrl}}/ill/settings/systemSetting/2c9180a096c91b430196c93f7b48071d
+  url: {{baseUrl}}/ill/settings/systemSetting/{{systemMultipleInstitutionEnabledId}}
   body: json
   auth: inherit
 }
@@ -14,13 +14,20 @@ body:json {
   {
     "defValue": "no",
     "hidden": false,
-    "id": "2c9180a096c91b430196c93f7b48071d",
+    "id": {{systemMultipleInstitutionEnabledId}},
     "key": "institution_multiple_enabled",
     "section": "institution",
     "settingType": "Refdata",
     "value": "yes",
     "vocab": "YesNo"
   }
+}
+
+script:pre-request {
+  const institutionSystemSettingResp = await folioAxios.get(`${bru.getEnvVar('baseUrl')}/ill/settings/systemSetting?filters=section==institution`)
+  
+  bru.setVar('systemMultipleInstitutionEnabled', institutionSystemSettingResp.data.find(respSett => respSett.key === 'institution_multiple_enabled'))
+  bru.setVar('systemMultipleInstitutionEnabledId', bru.getVar('systemMultipleInstitutionEnabled').id)
 }
 
 settings {
