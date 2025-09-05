@@ -1,7 +1,7 @@
 meta {
   name: Create new directory entry 1
   type: http
-  seq: 6
+  seq: 5
 }
 
 post {
@@ -47,6 +47,10 @@ script:pre-request {
   
   bru.setVar('illAuthority', authorityResp.data.find(inst => inst.symbol === 'ILL'))
   bru.setVar('illAuthorityId', bru.getVar('illAuthority').id)
+}
+
+script:post-response {
+  bru.setVar('directoryONEId', res.body.id)
 }
 
 settings {

@@ -1,7 +1,7 @@
 meta {
   name: Create branch 1
   type: http
-  seq: 9
+  seq: 7
 }
 
 post {
@@ -13,7 +13,7 @@ post {
 body:json {
   {
     "parent": {
-      "id": "aefc8d5f-95d9-433e-abc1-00d8acf2654d"
+      "id": {{directoryONEId}}
     },
     "name": "EXINT1 Branch",
     "type": "branch",
@@ -23,7 +23,7 @@ body:json {
       {
         "_delete": false,
         "authority": {
-          "id": "51440709-9f15-4b6d-9d68-8146a0befa5d"
+          "id": {{illAuthorityId}}
         },
         "symbol": "EXINT1BR"
       }
@@ -33,13 +33,17 @@ body:json {
         "_delete": false,
         "slug": "EXINT1BR",
         "service": {
-          "id": "22b7c2d4-56e8-4662-ac63-bd3f2c7b11a8"
+          "id": {{iso18626ServiceId}}
         }
       }
     ],
     "status": "managed",
-    "id": "91160456-8789-49e0-86dc-aec78bc49bc5"
+    "id": {{uniqueUUID}}
   }
+}
+
+script:post-response {
+  bru.setVar('branchONEId', res.body.id)
 }
 
 settings {

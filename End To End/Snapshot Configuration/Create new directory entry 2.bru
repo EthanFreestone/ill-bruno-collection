@@ -1,7 +1,7 @@
 meta {
   name: Create new directory entry 2
   type: http
-  seq: 7
+  seq: 6
 }
 
 post {
@@ -28,15 +28,19 @@ body:json {
     "services": [
       {
         "_delete": false,
+        "slug": "EXINT2",
         "service": {
           "id": {{iso18626ServiceId}}
-        },
-        "slug": "EXINT2"
+        }
       }
     ],
     "status": "managed",
     "id": {{uniqueUUID}}
   }
+}
+
+script:post-response {
+  bru.setVar('directoryTWOId', res.body.id)
 }
 
 settings {
