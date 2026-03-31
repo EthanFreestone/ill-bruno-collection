@@ -1,0 +1,39 @@
+meta {
+  name: Create ISO18626 Service
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/ill/directory/service?filters=status.value%3Dmanaged&perPage=100&sort=id
+  body: json
+  auth: inherit
+}
+
+params:query {
+  filters: status.value%3Dmanaged
+  perPage: 100
+  sort: id
+}
+
+body:json {
+  {
+    "name": "SNAPSHOT-ISO18626",
+    "type": "iso18626",
+    "businessFunction": "ill",
+    "address": "{{iso18626ServiceAddress}}",
+    "status": "managed"
+  }
+}
+
+script:pre-request {
+  bru.setVar("iso18626ServiceAddress", `${bru.getEnvVar('baseUrl')}/_/invoke/tenant/ill/ill/externalApi/iso18626`)
+}
+
+script:post-response {
+  bru.setVar('iso18626ServiceId', res.body.id)
+}
+
+settings {
+  encodeUrl: true
+}

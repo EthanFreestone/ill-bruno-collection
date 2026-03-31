@@ -1,0 +1,51 @@
+meta {
+  name: Create branch 1
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/ill/directory/entry
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "parent": {
+      "id": {{directoryONEId}}
+    },
+    "name": "EXINT1 Branch",
+    "type": "branch",
+    "slug": "EXINT1BR",
+    "lmsLocationCode": "EXINT1BR",
+    "symbols": [
+      {
+        "_delete": false,
+        "authority": {
+          "id": {{illAuthorityId}}
+        },
+        "symbol": "EXINT1BR"
+      }
+    ],
+    "services": [
+      {
+        "_delete": false,
+        "slug": "EXINT1BR",
+        "service": {
+          "id": {{iso18626ServiceId}}
+        }
+      }
+    ],
+    "status": "managed",
+    "id": {{uniqueUUID}}
+  }
+}
+
+script:post-response {
+  bru.setVar('branchONEId', res.body.id)
+}
+
+settings {
+  encodeUrl: true
+}

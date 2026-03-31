@@ -1,0 +1,58 @@
+meta {
+  name: Create new directory entry 1
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/ill/directory/entry
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Example Institution 1",
+    "type": "institution",
+    "slug": "EXINT1",
+    "lmsLocationCode": "EXINT1",
+    "symbols": [
+      {
+        "_delete": false,
+        "authority": {
+          "id": {{illAuthorityId}}
+        },
+        "symbol": "EXINT1"
+      }
+    ],
+    "services": [
+      {
+        "_delete": false,
+        "slug": "EXINT1",
+        "service": {
+          "id": {{iso18626ServiceId}}
+        }
+      }
+    ],
+    "status": "managed",
+    "id": {{uniqueUUID}}
+  }
+}
+
+script:pre-request {
+  // GET DEFAULT INST INTO VARIABLES
+  const authorityResp = await folioAxios.get(`${bru.getEnvVar('baseUrl')}/ill/directory/namingAuthority?perPage=100`)
+  
+  console.log("authorityResp: %o", authorityResp.data)
+  
+  bru.setVar('illAuthority', authorityResp.data.find(inst => inst.symbol === 'ILL'))
+  bru.setVar('illAuthorityId', bru.getVar('illAuthority').id)
+}
+
+script:post-response {
+  bru.setVar('directoryONEId', res.body.id)
+}
+
+settings {
+  encodeUrl: true
+}

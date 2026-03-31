@@ -1,7 +1,7 @@
 meta {
-  name: POST DirectoryEntry
+  name: POST Directory Entry
   type: http
-  seq: 2
+  seq: 3
 }
 
 post {
@@ -16,12 +16,6 @@ body:json {
     "type": "consortium",
     "slug": "rmTest5",
     "status": "managed",
-    "id": {{uuid}}
+    "id": {{uniqueUUID}}
   }
-}
-
-script:pre-request {
-  const { v4: uuidV4 } = require('uuid');
-  
-  bru.setVar('uuid', uuidV4())
 }

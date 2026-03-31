@@ -1,0 +1,15 @@
+meta {
+  name: GET Institution User - Can Manage
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/ill/institutionUser/canManage?perPage=150
+  body: none
+  auth: inherit
+}
+
+params:query {
+  perPage: 150
+}

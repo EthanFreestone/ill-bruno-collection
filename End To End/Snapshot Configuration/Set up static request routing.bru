@@ -1,0 +1,29 @@
+meta {
+  name: Set up static request routing
+  type: http
+  seq: 14
+}
+
+put {
+  url: {{baseUrl}}/ill/settings/institutionSetting/2c9180a096c91b430196c93f7bff074d
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": "2c9180a096c91b430196c93f7bff074d",
+    "section": "Routing",
+    "hidden": false,
+    "settingType": "String",
+    "key": "static_routes",
+    "institution": {
+      "id": "00000000-0000-0000-0000-000000000000"
+    },
+    "value": "ILL:EXINT2"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

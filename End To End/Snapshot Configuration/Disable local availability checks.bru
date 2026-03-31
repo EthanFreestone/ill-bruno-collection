@@ -1,0 +1,46 @@
+meta {
+  name: Disable local availability checks
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/ill/settings/institutionSetting/{{defaultEnableLocalAvailabilityCheckSettingId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": {{defaultEnableLocalAvailabilityCheckSettingId}},
+    "vocab": "YesNo",
+    "section": "autoResponder",
+    "hidden": false,
+    "value": "no",
+    "settingType": "Refdata",
+    "key": "enable_local_availability_check",
+    "institution": {
+      "id": {{defaultInstId}}
+    }
+  }
+  
+}
+
+script:pre-request {
+  // GET DEFAULT INST INTO VARIABLES
+  const institutionResp = await folioAxios.get(`${bru.getEnvVar('baseUrl')}/ill/institution?perPage=100`)
+  
+  bru.setVar('defaultInst', institutionResp.data.find(inst => inst.name === 'Default'))
+  bru.setVar('defaultInstId', bru.getVar('defaultInst').id)
+  
+  // GRAB LOCAL AVAILABILITY CHECK SETTING
+  const autoResponderSettingResp = await folioAxios.get(`${bru.getEnvVar('baseUrl')}/ill/settings/institutionSetting?filters=section==autoResponder`)
+  
+  bru.setVar('defaultEnableLocalAvailabilityCheckSetting', autoResponderSettingResp.data.find(respSett => respSett.key === 'enable_local_availability_check'))
+  bru.setVar('defaultEnableLocalAvailabilityCheckSettingId', bru.getVar('defaultEnableLocalAvailabilityCheckSetting').id)
+  
+}
+
+settings {
+  encodeUrl: true
+}

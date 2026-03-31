@@ -1,0 +1,20 @@
+meta {
+  name: GET sharedIndexQuery/byQuery
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/ill/sharedIndexQuery/byQuery?match=&term=0670813648&sort=dateCreated%3Bdesc&stats=true&page=1&perPage=10
+  body: none
+  auth: inherit
+}
+
+params:query {
+  match: 
+  term: 0670813648
+  sort: dateCreated;desc
+  stats: true
+  page: 1
+  perPage: 10
+}

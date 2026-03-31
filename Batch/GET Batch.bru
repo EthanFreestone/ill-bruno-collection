@@ -1,0 +1,16 @@
+meta {
+  name: GET Batch
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/ill/batch?perPage=1000&filters=isRequester==true
+  body: none
+  auth: inherit
+}
+
+params:query {
+  perPage: 1000
+  filters: isRequester==true
+}

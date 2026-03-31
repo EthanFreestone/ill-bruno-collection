@@ -1,0 +1,51 @@
+meta {
+  name: Create branch 2
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/ill/directory/entry
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "parent": {
+      "id": {{directoryTWOId}}
+    },
+    "name": "EXINT2 Branch",
+    "type": "branch",
+    "slug": "EXINT2BR",
+    "lmsLocationCode": "EXINT2BR",
+    "symbols": [
+      {
+        "_delete": false,
+        "authority": {
+          "id": {{illAuthorityId}}
+        },
+        "symbol": "EXINT2BR"
+      }
+    ],
+    "services": [
+      {
+        "_delete": false,
+        "slug": "EXINT2BR",
+        "service": {
+          "id": {{iso18626ServiceId}}
+        }
+      }
+    ],
+    "status": "managed",
+    "id": {{uniqueUUID}}
+  }
+}
+
+script:post-response {
+  bru.setVar('branchTWOId', res.body.id)
+}
+
+settings {
+  encodeUrl: true
+}

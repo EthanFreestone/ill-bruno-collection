@@ -1,0 +1,35 @@
+meta {
+  name: Multiple library support
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/ill/settings/systemSetting/{{systemMultipleInstitutionEnabledId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "defValue": "no",
+    "hidden": false,
+    "id": {{systemMultipleInstitutionEnabledId}},
+    "key": "institution_multiple_enabled",
+    "section": "institution",
+    "settingType": "Refdata",
+    "value": "yes",
+    "vocab": "YesNo"
+  }
+}
+
+script:pre-request {
+  const institutionSystemSettingResp = await folioAxios.get(`${bru.getEnvVar('baseUrl')}/ill/settings/systemSetting?filters=section==institution`)
+  
+  bru.setVar('systemMultipleInstitutionEnabled', institutionSystemSettingResp.data.find(respSett => respSett.key === 'institution_multiple_enabled'))
+  bru.setVar('systemMultipleInstitutionEnabledId', bru.getVar('systemMultipleInstitutionEnabled').id)
+}
+
+settings {
+  encodeUrl: true
+}

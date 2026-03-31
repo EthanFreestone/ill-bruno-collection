@@ -1,0 +1,43 @@
+meta {
+  name: PUT Edit Directory Entry
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}ill/directory/entry/{{uuid}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": {{uuid}},
+    "addresses": [],
+    "units": [],
+    "customProperties": {},
+    "slug": "FETCH SLUG",
+    "tags": [],
+    "symbols": [],
+    "name": "FETCH NAME",
+    "announcements": [],
+    "type": {{uuid}},
+    "status": {
+      "id": {{uuid}},
+      "value": "managed",
+      "label": "Managed",
+      "owner": {
+        "id": {{uuid}},
+        "desc": "DirectoryEntry.Status",
+        "internal": false
+      }
+    },
+    "services": [],
+    "canEdit": "YesWarning",
+    "tagSummary": "No tags",
+    "symbolSummary": "No symbols",
+    "fullyQualifiedName": "FETCH SLUG",
+    "phoneNumber": "123456789",
+    "emailAddress": "123456789"
+  }
+}

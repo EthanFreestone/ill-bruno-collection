@@ -1,0 +1,35 @@
+meta {
+  name: POST Create Unit
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/ill/directory/entry
+  body: json
+  auth: inherit
+}
+
+params:query {
+  : 
+}
+
+body:json {
+  {
+     "parent": {
+        "id": {{uuid}}
+     },
+     "name": "testCreateUnit",
+     "slug": "tCU",
+     "status": "managed",
+     "id": {{uniqueUUID}}
+   }
+}
+
+script:pre-request {
+  const data = await folioAxios.get(
+    `${getBaseUrl()}/ill/directory/entry?filters=slug=rmTest5` 
+  )
+  
+  console.log("DATA: %o", data)
+}

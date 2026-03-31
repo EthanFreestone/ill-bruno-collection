@@ -1,0 +1,26 @@
+meta {
+  name: Pickup tag 1
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{baseUrl}}/ill/directory/entry/91160456-8789-49e0-86dc-aec78bc49bc5
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": {{branchONEid}},
+    "tags": [
+      {
+        "value": "pickup"
+      }
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

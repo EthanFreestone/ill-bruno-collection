@@ -1,0 +1,29 @@
+meta {
+  name: Update Request Id prefix
+  type: http
+  seq: 13
+}
+
+put {
+  url: {{baseUrl}}/ill/settings/institutionSetting/2c9180a096c91b430196c93f7baf073a
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": "2c9180a096c91b430196c93f7baf073a",
+    "section": "requests",
+    "hidden": false,
+    "value": "EXINT1",
+    "settingType": "String",
+    "key": "request_id_prefix",
+    "institution": {
+      "id": "00000000-0000-0000-0000-000000000000"
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+}
